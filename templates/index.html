@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>Index da Pagina</title>
+</head>
+<body>
+    <header class="cabecalho">
+        <h1>TENTATIVA DE SITE DE ESTOQUE v.0001</h1>
+        <hr>
+    </header>
+    
+    <main>
+        <section class="sessao_principal">
+            <div class="s_p_escolha">
+                <a href="./register" target="_self">ADICIONAR ITEM</a>
+            </div>
+
+            <div class="s_p_escolha">
+                <a href="{{ url_for('scanner') }}" target="_self">ENTRADA</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

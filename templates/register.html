@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema simples</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sistema de Estoque de Almoxerife</h1>
+    <form method="post">
+        <label>Nome do Produto</label><br>
+        <input type="text" name="nome"><br><br>
+
+        <label>REF</label><br>
+        <input type="text" name="ref"><br><br>
+
+        <label>QNTD</label><br>
+        <input type="text" name="qntd"><br><br>
+
+        <button type="submit">Cadastrar Produto</button>
+    </form>
+
+    <h2>---------------------------------</h2>
+    <h2>ESTOQUE</h2>
+        
+    <table>
+        
+        <caption>teste</caption>
+        <tr>
+            <th>ITEM</th>
+            <th>REFERENCIA</th>
+            <th>QNTD</th>
+        </tr>
+        {% for produto in produtos %}
+        <tr>
+            <th>
+                {{ produto[0] }}
+                <form action="{{ url_for('delete', ref=produto[1]) }}" method="POST">
+                <button type="submit">Excluir</button>
+            </form>
+            </th>
+
+            <th>{{ produto[1] }}</th>
+
+            <th>{{ produto[2] }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
