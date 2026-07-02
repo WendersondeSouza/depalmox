@@ -1,3 +1,4 @@
+const resultado = document.getElementById("resultado")
 const scanner = new Html5QrcodeScanner(
     "reader",
     {
@@ -8,7 +9,7 @@ const scanner = new Html5QrcodeScanner(
 
 scanner.render(
     (texto) => {
-        console.log("QR Code:", texto);
+        resultado.textContent = texto;
     },
     (erro) => {
         // Ignora os erros enquanto procura um QR Code
