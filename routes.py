@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from database import criar_produtos, excluir_produto, listar_produtos
+from database import criar_produtos, excluir_produto, listar_produtos, qntd_increase
 def route_register(app):
         
     @app.route("/", methods=["GET"])
@@ -28,7 +28,18 @@ def route_register(app):
         return redirect(url_for("registrar"))
     
     # scanner route for qr code reader
-    @app.route("/scanner")
+    @app.route("/scanner", methods=["GET"])
     def scanner():
+
         return render_template("scanner.html")
 
+    @app.route("/scanner/read", methods=["POST"])
+    def scanner_read():
+        if request.method == "POST":
+            dados = request.get_json()
+
+            ref = dados["ref"]
+            
+            qntd_increase(ref)
+
+            return {"status:": "ok"}

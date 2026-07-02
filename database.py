@@ -49,3 +49,18 @@ def excluir_produto(ref):
     connection.commit()
     connection.close()
 
+def qntd_increase(ref):
+    connection = sqlite3.connect("estoque.db")
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+        UPDATE produtos
+        SET quantidade = quantidade + 1
+        WHERE ref = ?
+        """,
+        (ref,)
+    )
+
+    connection.commit()
+    connection.close()

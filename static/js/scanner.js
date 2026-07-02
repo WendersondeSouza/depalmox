@@ -10,6 +10,16 @@ const scanner = new Html5QrcodeScanner(
 scanner.render(
     (texto) => {
         resultado.textContent = texto;
+
+        fetch("/scanner/read", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ref: texto
+            })
+        })
     },
     (erro) => {
         // Ignora os erros enquanto procura um QR Code
