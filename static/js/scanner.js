@@ -6,9 +6,17 @@ const scanner = new Html5QrcodeScanner(
         qrbox: 250
     }
 );
+let podeLer = true;
+
 
 scanner.render(
     (texto) => {
+        if (!podeLer) {
+            return;
+        }
+
+        podeLer = false;
+
         resultado.textContent = texto;
 
         fetch("/scanner/read", {
@@ -19,9 +27,11 @@ scanner.render(
             body: JSON.stringify({
                 ref: texto
             })
-        })
+        });
+
+        setTimeout(() => {
+            podeLer = true
+        }, 800);
     },
-    (erro) => {
-        // Ignora os erros enquanto procura um QR Code
-    }
+    (erro) => {}
 );
