@@ -30,8 +30,12 @@ def route_register(app):
     # scanner route for qr code reader
     @app.route("/scanner", methods=["GET"])
     def scanner():
+        produtos = listar_produtos()
 
-        return render_template("scanner.html")
+        return render_template(
+            "scanner.html",
+            produtos=produtos
+        )
 
     @app.route("/scanner/read", methods=["POST"])
     def scanner_read():
@@ -39,7 +43,7 @@ def route_register(app):
             dados = request.get_json()
 
             ref = dados["ref"]
-            
+
             qntd_increase(ref)
 
             return {"status:": "ok"}
