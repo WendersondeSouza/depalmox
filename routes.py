@@ -38,12 +38,21 @@ def route_register(app):
         )
 
     @app.route("/scanner/read", methods=["POST"])
+   
     def scanner_read():
         if request.method == "POST":
             dados = request.get_json()
 
             ref = dados["ref"]
 
-            qntd_increase(ref)
+            sucesso = qntd_increase(ref)
 
-            return {"status:": "ok"}
+            if sucesso:
+                return {
+                    "status": "ok"
+                }
+
+            return {
+                "status": "erro",
+                "mensagem": "pProduto não encontrado"
+            }

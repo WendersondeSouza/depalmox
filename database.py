@@ -61,6 +61,10 @@ def qntd_increase(ref):
         """,
         (ref,)
     )
-
     connection.commit()
+    if cursor.rowcount == 0:
+        connection.close()
+        return False
+
     connection.close()
+    return True 

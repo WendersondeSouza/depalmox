@@ -7,6 +7,7 @@ const scanner = new Html5QrcodeScanner(
     }
 );
 const beep_sound = new Audio("/static/sounds/beep.mp3");
+const error_sound = new Audio("/static/souds/error.mp3")
 let podeLer = true;
 
 
@@ -31,6 +32,15 @@ scanner.render(
             body: JSON.stringify({
                 ref: texto
             })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "ok") {
+                beep_sound.play();
+            } else {
+                error_sound.play();
+                resultado.textContent = data.mensagem;
+            }
         });
 
         setTimeout(() => {
