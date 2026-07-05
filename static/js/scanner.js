@@ -6,6 +6,7 @@ const scanner = new Html5QrcodeScanner(
         qrbox: 250
     }
 );
+const beep_sound = new Audio("/static/sounds/beep.mp3");
 let podeLer = true;
 
 
@@ -19,6 +20,9 @@ scanner.render(
 
         resultado.textContent = texto;
 
+        beep_sound.currentTime = 0;
+        beep_sound.play();
+
         fetch("/scanner/read", {
             method: "POST",
             headers: {
@@ -31,7 +35,7 @@ scanner.render(
 
         setTimeout(() => {
             podeLer = true
-        }, 800);
+        }, 1300);
     },
     (erro) => {}
 );
