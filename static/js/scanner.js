@@ -7,7 +7,7 @@ const scanner = new Html5QrcodeScanner(
     }
 );
 const beep_sound = new Audio("/static/sounds/beep.mp3");
-const error_sound = new Audio("/static/souds/error.mp3")
+const error_sound = new Audio("/static/sounds/error.mp3")
 let podeLer = true;
 
 
