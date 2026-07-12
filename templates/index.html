@@ -1,27 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=add_circle,login" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/fonts.css">
     <title>Index da Pagina</title>
 </head>
+
 <body>
-    <header class="cabecalho">
-        <h1>TENTATIVA DE SITE DE ESTOQUE v.0001</h1>
+    <header class="cabecalho oswald-font">
+        <h1>DEPALMOX V 1.0.1</h1>
         <hr>
     </header>
-    
-    <main>
-        <section class="sessao_principal">
-            <div class="s_p_escolha">
-                <a href="./register" target="_self">ADICIONAR ITEM</a>
-            </div>
 
-            <div class="s_p_escolha">
-                <a href="{{ url_for('scanner') }}" target="_self">ENTRADA</a>
-            </div>
-        </section>
+    <main>
+        <div class="escolhas oswald-font">
+            <h2>O QUE VAMOS FAZER HOJE?
+                <hr>
+            </h2>
+            <section class="sessao_principal">
+                <div class="s_p_escolha">
+                    <a href="./register" target="_self">
+                        <div class="box_icone">
+                            <span class="material-symbols-outlined">
+                            add_circle
+                            </span>
+                        </div>
+                        
+                        <p class="oswald-font">ADICIONAR ITEM</p>
+                    </a>
+                </div>
+
+                <div class="s_p_escolha">
+                    <a href="{{ url_for('scanner') }}" target="_self">
+                        <div class="box_icone">
+                            <span class="material-symbols-outlined">
+                                login
+                            </span>
+                        </div>
+                        
+                        <p class="oswald-font">SCANNER</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+
     </main>
+
+    <footer>
+        <div class="rodape">
+            <p class="oswald-font">&copyTodos os direitos reservados a W Produções</p>
+        </div>
+    </footer>
 </body>
+
 </html>

@@ -54,5 +54,5 @@ def route_register(app):
 
             return {
                 "status": "erro",
-                "mensagem": "pProduto não encontrado"
+                "mensagem": "Produto não encontrado"
             }
