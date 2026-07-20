@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/fonts.css">
     <title>Scanner</title>
-    
-        <style>
+
+    <style>
         table {
             border-collapse: collapse;
+            border-color: rgb(21, 39, 63);
         }
 
         table,
         th,
         td {
-            border: 1px solid black;
+            border: 2px solid rgb(21, 39, 63);
         }
 
         th,
         td {
             padding: 8px;
-            
+
         }
     </style>
 </head>
-<body>
-    <a href="{{ url_for('index') }}">Voltar</a>
-    <h1>qr code scanner</h1>
-    <hr>
 
-    <div id="reader"></div>
+<body style="width: 100vw;" class="dflex x-center dir-column oswald-font">
+    <header class="cabecalho dir-row branco_suave">
+        <a class="centralizar" href="{{ url_for('index') }}">
+            <span class="material-symbols-outlined text-decor-none">
+                arrow_back
+            </span>
+        </a>
+        <h1 class="titulo-1 w100">SCANNER
+            <hr>
+        </h1>
+    </header>
+    <main class="w100 centralizar p10px scanner-main">
+        <div class="scanner w80">
+            <div id="reader" class="w100 branco_suave"></div>
+        </div>
+    </main>
+
     <p id="resultado"></p>
+    <div class="w80 centralizar">
+        <div class="w80 branco_suave centralizar bordas-azuladas">
+            <table class="w50">
+                <caption>ESTOQUE</caption>
+                <tr>
+                    <th>ITEM</th>
+                    <th>REF</th>
+                    <th>QNTD</th>
+                </tr>
+                {% for produto in produtos %}
+                <tr>
+                    <th>{{ produto[0] }}</th>
+                    <th>{{ produto[1] }}</th>
+                    <th>{{ produto[2] }}</th>
+                </tr>
 
-    <h2>---------------------------------</h2>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 
-    <table>
-        <caption>ESTOQUE</caption>
-        <tr>
-            <th>ITEM</th>
-            <th>REF</th>
-            <th>QNTD</th>
-        </tr>
-        {% for produto in produtos %}
-        <tr>
-            <th>{{ produto[0] }}</th>
-            <th>{{ produto[1] }}</th>
-            <th>{{ produto[2] }}</th>
-        </tr>
-        
-        {% endfor %} 
 
-    </table>
 
-    
+
 
 
     <script src="https://unpkg.com/html5-qrcode"></script>
     <script src="{{ url_for('static', filename='js/scanner.js') }}"></script>
 </body>
+
 </html>
